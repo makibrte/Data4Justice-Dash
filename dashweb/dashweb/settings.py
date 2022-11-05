@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "dashapi.apps.DashapiConfig",
+    'dashapi',
 ]
 
 MIDDLEWARE = [
@@ -115,9 +116,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
+STATICFILES_DIRS =[
+    os.path.join(BASE_DIR, 'static')
+]
 STATIC_URL = "static/"
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static-cdn')
+GOOGLE_API_KEY = "AIzaSyC7wvWyLEV6-N2jtAHAmyB4bWAI9Jgc27Y"
+CLIENT_ID = '1063556094935-otqrg5pdco8oij58l84lss9qunjhrtiu.apps.googleusercontent.com'
+CLIENT_SECRET = "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"
+LOGIN_URL = 'users:sign-in'
+LOGIN_REDIRECT_URL = "users:account"
+LOGOUT_REDIRECT_URL = 'users:sign-in'
+BASE_COUNTRY = "US"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
